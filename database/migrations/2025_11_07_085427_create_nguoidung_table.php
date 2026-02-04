@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('NguoiDung', function (Blueprint $table) {
-            $table->bigIncrements('MaND');
-            $table->string('HoTen', 100);
-            $table->string('Email', 100)->unique();
-            $table->string('MatKhau', 255);
-            $table->string('SoDienThoai', 15)->nullable();
-            $table->string('DiaChi', 255)->nullable();
-            $table->string('VaiTro', 10)->default('user');
+        Schema::create('nguoidung', function (Blueprint $table) {
+            $table->bigIncrements('mand');
+            $table->string('hoten', 100);
+            $table->string('email', 100)->unique();
+            $table->string('matkhau', 255);
+            $table->string('sodienthoai', 15)->nullable();
+            $table->string('diachi', 255)->nullable();
+            $table->string('vaitro', 10)->default('user');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('NguoiDung');
+        Schema::dropIfExists('nguoidung');
     }
 };

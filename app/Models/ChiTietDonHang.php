@@ -6,23 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChiTietDonHang extends Model
 {
-    protected $table = 'ChiTietDonHang'; // Ten bang trong CSDL
-    protected $primaryKey = 'MaCTDH';// Khoa chinh
+    protected $table = 'chitietdonhang'; // Ten bang trong CSDL
+    protected $primaryKey = 'mactdh';// Khoa chinh
     public $incrementing = true;// Khoa chinh tu tang
     protected $keyType = 'int';// Kieu du lieu khoa chinh
     public $timestamps = false; // Ko su dung created_at va updated_at
     protected $fillable = [
-        'SoLuong',
-        'DonGia',
-        'MaDH',
-        'MaSP'
+        'soluong',
+        'dongia',
+        'madh',
+        'masp'
     ];
     public function donHang()
     {
-        return $this->belongsTo(DonHang::class, 'MaDH', 'MaDH');
+        return $this->belongsTo(DonHang::class, 'madh', 'madh');
     }
     public function sanPham()
     {
-        return $this->belongsTo(SanPham::class, 'MaSP', 'MaSP');
+        return $this->belongsTo(SanPham::class, 'masp', 'masp');
     }
 }

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('SanPham', function (Blueprint $table) {
-            $table->bigIncrements('MaSP');
-            $table->string('TenSP', 30);
-            $table->integer('GiaSP');
-            $table->string('HinhSP', 200)->nullable();
-            $table->foreignId('MaDM')
-                    ->constrained('DanhMuc')
+        Schema::create('sanpham', function (Blueprint $table) {
+            $table->bigIncrements('masp');
+            $table->string('tensp', 30);
+            $table->integer('giasp');
+            $table->string('hinhsp', 200)->nullable();
+            $table->foreignId('madm')
+                    ->constrained('danhmuc')
                     ->onDelete('cascade');
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('SanPham');
+        Schema::dropIfExists('sanpham');
     }
 };

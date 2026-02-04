@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('DonHang', function (Blueprint $table) {
-            $table->bigIncrements('MaDH');
-            $table->string('SoLienHe', 15);
-            $table->string('DiaChiGiao', 255);
-            $table->dateTime('NgayDat');
-            $table->string('TrangThai', 20);
-            $table->foreignId('MaND')->nullable()
-                    ->constrained('NguoiDung')       // FK tới bảng NguoiDung
+        Schema::create('donhang', function (Blueprint $table) {
+            $table->bigIncrements('madh');
+            $table->string('solienhe', 15);
+            $table->string('diachigiao', 255);
+            $table->dateTime('ngaydat');
+            $table->string('trangthai', 20);
+            $table->foreignId('mand')->nullable()
+                    ->constrained('nguoidung')       // FK tới bảng nguoidung
                     ->onDelete('cascade'); 
-            $table->foreignId('MaKM')->nullable()
-                    ->constrained('KhuyenMai')       // FK tới bảng KhuyenMai
+            $table->foreignId('makm')->nullable()
+                    ->constrained('khuyenmai')       // FK tới bảng khuyenmai
                     ->onDelete('cascade'); 
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('DonHang');
+        Schema::dropIfExists('donhang');
     }
 };

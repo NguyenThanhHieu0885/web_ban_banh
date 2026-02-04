@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('KhuyenMai', function (Blueprint $table) {
-            $table->bigIncrements('MaKM');
-            $table->string('TenKM', 100);
-            $table->string('LoaiKM', 20);
-            $table->integer('GiaTri');
-            $table->dateTime('NgayBD');
-            $table->dateTime('NgayKT');
-            $table->string('DieuKien', 30)->nullable();
+        Schema::create('khuyenmai', function (Blueprint $table) {
+            $table->bigIncrements('makm');
+            $table->string('tenkm', 100);
+            $table->string('loaikm', 20);
+            $table->integer('giatri');
+            $table->dateTime('ngaybd');
+            $table->dateTime('ngaykt');
+            $table->string('dieukien', 30)->nullable();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('KhuyenMai');
+        Schema::dropIfExists('khuyenmai');
     }
 };

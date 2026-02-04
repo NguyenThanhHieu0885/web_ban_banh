@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('DanhMuc', function (Blueprint $table) {
-            $table->bigIncrements('MaDM');
-            $table->string('TenDM', 20);
-            $table->string('HinhDM', 200)->nullable();
+        Schema::create('danhmuc', function (Blueprint $table) {
+            $table->bigIncrements('madm');
+            $table->string('tendm', 20);
+            $table->string('hinhdm', 200)->nullable();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('DanhMuc');
+        Schema::dropIfExists('danhmuc');
     }
 };

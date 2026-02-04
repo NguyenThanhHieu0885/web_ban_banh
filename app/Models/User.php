@@ -20,18 +20,18 @@ class User extends Authenticatable
      * @var list<string>
      */
 
-    protected $table = 'NguoiDung'; // Ten bang trong CSDL
-    protected $primaryKey = 'MaND';// Khoa chinh
+    protected $table = 'nguoidung'; // Ten bang trong CSDL
+    protected $primaryKey = 'mand';// Khoa chinh
     public $incrementing = true;// Khoa chinh tu tang
     protected $keyType = 'int';// Kieu du lieu khoa chinh
     public $timestamps = false; // Ko su dung created_at va updated_at
 
     protected $fillable = [
-        'HoTen',
-        'Email',
-        'MatKhau',
-        'SoDienThoai',
-        'DiaChi',
+        'hoten',
+        'email',
+        'matkhau',
+        'sodienthoai',
+        'diachi',
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'MatKhau',
+        'matkhau',
         'remember_token',
     ];
 

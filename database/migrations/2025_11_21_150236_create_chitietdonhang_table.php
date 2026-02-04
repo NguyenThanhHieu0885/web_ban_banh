@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ChiTietDonHang', function (Blueprint $table) {
-            $table->bigIncrements('MaCTDH');
-            $table->integer('SoLuong');
-            $table->integer('DonGia');
-            $table->foreignId('MaDH')
-                    ->constrained('DonHang')
+        Schema::create('chitietdonhang', function (Blueprint $table) {
+            $table->bigIncrements('mactdh');
+            $table->integer('soluong');
+            $table->integer('dongia');
+            $table->foreignId('madh')
+                    ->constrained('donhang')
                     ->onDelete('cascade');
-            $table->foreignId('MaSP')
-                    ->constrained('SanPham')
+            $table->foreignId('masp')
+                    ->constrained('sanpham')
                     ->onDelete('cascade');
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ChiTietDonHang');
+        Schema::dropIfExists('chitietdonhang');
     }
 };
