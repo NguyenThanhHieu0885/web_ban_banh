@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // 1. Xóa bảng cũ nếu tồn tại (Tránh lỗi Transaction Aborted)
-        Schema::dropIfExists('nguoidung');
 
         // 2. Tạo bảng mới
         Schema::create('nguoidung', function (Blueprint $table) {
