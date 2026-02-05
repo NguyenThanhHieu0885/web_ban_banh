@@ -13,17 +13,12 @@ return new class extends Migration
             Schema::create('users', function (Blueprint $table) {
                 $table->id(); 
                 $table->string('hoten', 100);
-                $table->string('email', 100);
+                $table->string('email', 100)->unique(); // Thêm unique luôn khi tạo
                 $table->string('matkhau', 255);
                 $table->string('sodienthoai', 15)->nullable();
                 $table->string('diachi', 255)->nullable();
                 $table->string('vaitro', 10)->default('user');
                 $table->timestamps();
-            });
-            
-            // Thêm unique constraint sau khi table đã được tạo
-            Schema::table('users', function (Blueprint $table) {
-                $table->unique('email');
             });
         }
     }
