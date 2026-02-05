@@ -9,10 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         // 1. Dọn dẹp nếu lỡ còn sót
-        Schema::dropIfExists('nguoidung');
+        Schema::dropIfExists('users');
 
         // 2. Tạo bảng với tên viết thường (Chuẩn PostgreSQL)
-        Schema::create('nguoidung', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             // Dùng id() thay vì bigIncrements('mand') để tránh lỗi vặt
             $table->id(); 
             
@@ -33,6 +33,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('nguoidung');
+        Schema::dropIfExists('users');
     }
 };

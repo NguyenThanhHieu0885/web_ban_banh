@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var list<string>
      */
 
-    protected $table = 'nguoidung'; // Ten bang trong CSDL
+    protected $table = 'users'; // Ten bang trong CSDL
     protected $primaryKey = 'mand';// Khoa chinh
     public $incrementing = true;// Khoa chinh tu tang
     protected $keyType = 'int';// Kieu du lieu khoa chinh
