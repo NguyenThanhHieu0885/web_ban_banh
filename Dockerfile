@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libpq-dev \
     nodejs \
-    npm
+    npm \
+    && rm -rf /var/lib/apt/lists/*
 
 # 3. Cài đặt các Extension PHP cần thiết cho Laravel
 RUN docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd
