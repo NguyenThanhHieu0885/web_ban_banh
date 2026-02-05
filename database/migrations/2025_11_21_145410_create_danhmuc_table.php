@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('danhmuc')) {
-            Schema::create('danhmuc', function (Blueprint $table) {
-                $table->bigIncrements('madm');
-                $table->string('tendm', 20);
-                $table->string('hinhdm', 200)->nullable();
-            });
-        }
+        Schema::create('danhmuc', function (Blueprint $table) {
+            $table->bigIncrements('madm');
+            $table->string('tendm', 20);
+            $table->string('hinhdm', 200)->nullable();
+        });
     }
 
     /**

@@ -12,22 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         // Cache table
-        if (!Schema::hasTable('cache')) {
-            Schema::create('cache', function (Blueprint $table) {
-                $table->string('key')->primary();
-                $table->text('value');
-                $table->integer('expiration');
-            });
-        }
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->text('value');
+            $table->integer('expiration');
+        });
 
         // Cache locks table
-        if (!Schema::hasTable('cache_locks')) {
-            Schema::create('cache_locks', function (Blueprint $table) {
-                $table->string('key')->primary();
-                $table->string('owner');
-                $table->integer('expiration');
-            });
-        }
+        Schema::create('cache_locks', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->string('owner');
+            $table->integer('expiration');
+        });
     }
 
     /**

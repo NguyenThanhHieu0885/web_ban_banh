@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('sanpham')) {
-            Schema::create('sanpham', function (Blueprint $table) {
-                $table->bigIncrements('masp');
-                $table->string('tensp', 30);
-                $table->integer('giasp');
-                $table->string('hinhsp', 200)->nullable();
-                $table->foreignId('madm')
-                        ->constrained('danhmuc', 'madm')
-                        ->onDelete('cascade');
-            });
-        }
+        Schema::create('sanpham', function (Blueprint $table) {
+            $table->bigIncrements('masp');
+            $table->string('tensp', 30);
+            $table->integer('giasp');
+            $table->string('hinhsp', 200)->nullable();
+            $table->foreignId('madm')
+                    ->constrained('danhmuc', 'madm')
+                    ->onDelete('cascade');
+        });
     }
 
     /**
