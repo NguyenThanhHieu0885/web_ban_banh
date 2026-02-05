@@ -1,4 +1,5 @@
 # 1. Dùng PHP 8.2 làm nền tảng
+# Build timestamp: 2026-02-05 11:00 - Force cache clear
 FROM php:8.2-cli
 
 # 2. Cài đặt các thư viện cần thiết cho Linux (Zip, Git, Postgres...)
