@@ -29,8 +29,13 @@ COPY . .
 # 7. Chạy lệnh cài đặt thư viện PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# 8. Chạy lệnh build Frontend (React/Vue)
-RUN npm install && npm run build
+# 8. Chạy lệnh build Frontend (React/Vue) - Nếu có
+# Nếu frontend đã build sẵn trong public/, bỏ qua bước này
+# RUN npm install && npm run build
+
+# 8.1. Set quyền cho storage và bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
 # 9. Mở cổng 8080 (Cổng mặc định của Render)
 EXPOSE 8080
