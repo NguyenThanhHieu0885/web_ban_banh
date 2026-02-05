@@ -41,9 +41,5 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 8080
 
 # 10. Lệnh chạy server khi web khởi động
-# Lệnh cũ của bạn là: CMD php artisan serve ...
-# HÃY XÓA NÓ ĐI VÀ THAY BẰNG DÒNG DƯỚI ĐÂY:
-
-# Thử chạy migrate, nếu lỗi thì kệ nó, vẫn chạy serve để web Live
-# Chạy migrate trước, nếu lỗi thì bỏ qua (|| true) để web vẫn mở lên được
-CMD sh -c "php artisan migrate --force || true && php artisan serve --host=0.0.0.0 --port=8080"
+# Clear cache, migrate database, và chạy server
+CMD sh -c "php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"

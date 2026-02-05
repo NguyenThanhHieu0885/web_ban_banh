@@ -8,27 +8,24 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // 1. Dọn dẹp nếu lỡ còn sót
-        Schema::dropIfExists('users');
-
-        // 2. Tạo bảng với tên viết thường (Chuẩn PostgreSQL)
-        Schema::create('users', function (Blueprint $table) {
-            // Dùng id() thay vì bigIncrements('mand') để tránh lỗi vặt
-            $table->id(); 
+        // Kiểm tra nếu table chưa tồn tại mới tạo
+        if (!Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->id(); 
+                $table->string('hoten', 100);
+                $table->string('email', 100);
+                $table->string('matkhau', 255);
+                $table->string('sodienthoai', 15)->nullable();
+                $table->string('diachi', 255)->nullable();
+                $table->string('vaitro', 10)->default('user');
+                $table->timestamps();
+            });
             
-            $table->string('hoten', 100);
-            
-            // Tách unique ra để tránh lỗi Transaction
-            $table->string('email', 100); 
-            
-            $table->string('matkhau', 255);
-            $table->string('sodienthoai', 15)->nullable();
-            $table->string('diachi', 255)->nullable();
-            $table->string('vaitro', 10)->default('user');
-            
-            // Bắt buộc phải có cái này
-            $table->timestamps();
-        });
+            // Thêm unique constraint sau khi table đã được tạo
+            Schema::table('users', function (Blueprint $table) {
+                $table->unique('email');
+            });
+        }
     }
 
     public function down(): void

@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chitietdonhang', function (Blueprint $table) {
-            $table->bigIncrements('mactdh');
-            $table->integer('soluong');
-            $table->integer('dongia');
-            $table->foreignId('madh')
-                    ->constrained('donhang')
-                    ->onDelete('cascade');
-            $table->foreignId('masp')
-                    ->constrained('sanpham')
-                    ->onDelete('cascade');
-        });
+        if (!Schema::hasTable('chitietdonhang')) {
+            Schema::create('chitietdonhang', function (Blueprint $table) {
+                $table->bigIncrements('mactdh');
+                $table->integer('soluong');
+                $table->integer('dongia');
+                $table->foreignId('madh')
+                        ->constrained('donhang', 'madh')
+                        ->onDelete('cascade');
+                $table->foreignId('masp')
+                        ->constrained('sanpham', 'masp')
+                        ->onDelete('cascade');
+            });
+        }
     }
 
     /**

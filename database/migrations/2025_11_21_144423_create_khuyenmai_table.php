@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('khuyenmai', function (Blueprint $table) {
-            $table->bigIncrements('makm');
-            $table->string('tenkm', 100);
-            $table->string('loaikm', 20);
-            $table->integer('giatri');
-            $table->dateTime('ngaybd');
-            $table->dateTime('ngaykt');
-            $table->string('dieukien', 30)->nullable();
-        });
+        if (!Schema::hasTable('khuyenmai')) {
+            Schema::create('khuyenmai', function (Blueprint $table) {
+                $table->bigIncrements('makm');
+                $table->string('tenkm', 100);
+                $table->string('loaikm', 20);
+                $table->integer('giatri');
+                $table->dateTime('ngaybd');
+                $table->dateTime('ngaykt');
+                $table->string('dieukien', 30)->nullable();
+            });
+        }
     }
 
     /**

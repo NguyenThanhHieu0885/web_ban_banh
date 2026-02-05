@@ -11,19 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('donhang', function (Blueprint $table) {
-            $table->bigIncrements('madh');
-            $table->string('solienhe', 15);
-            $table->string('diachigiao', 255);
-            $table->dateTime('ngaydat');
-            $table->string('trangthai', 20);
-            $table->foreignId('mand')->nullable()
-                    ->constrained('nguoidung')       // FK tới bảng nguoidung
-                    ->onDelete('cascade'); 
-            $table->foreignId('makm')->nullable()
-                    ->constrained('khuyenmai')       // FK tới bảng khuyenmai
-                    ->onDelete('cascade'); 
-        });
+        if (!Schema::hasTable('donhang')) {
+            Schema::create('donhang', function (Blueprint $table) {
+                $table->bigIncrements('madh');
+                $table->string('solienhe', 15);
+                $table->string('diachigiao', 255);
+                $table->dateTime('ngaydat');
+                $table->string('trangthai', 20);
+                $table->foreignId('mand')->nullable()
+                        ->constrained('users', 'id')       // FK tới bảng users (không phải nguoidung)
+                        ->onDelete('cascade'); 
+                $table->foreignId('makm')->nullable()
+                        ->constrained('khuyenmai', 'makm')       // FK tới bảng khuyenmai
+                        ->onDelete('cascade'); 
+            });
+        }
     }
 
     /**
