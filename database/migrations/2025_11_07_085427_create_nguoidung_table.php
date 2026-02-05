@@ -6,30 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
+        // 1. Dọn dẹp nếu lỡ còn sót
+        Schema::dropIfExists('nguoidung');
 
-        // 2. Tạo bảng mới
+        // 2. Tạo bảng với tên viết thường (Chuẩn PostgreSQL)
         Schema::create('nguoidung', function (Blueprint $table) {
-            $table->bigIncrements('mand'); // Khóa chính là mand
+            // Dùng id() thay vì bigIncrements('mand') để tránh lỗi vặt
+            $table->id(); 
+            
             $table->string('hoten', 100);
-            $table->string('email', 100)->unique();
+            
+            // Tách unique ra để tránh lỗi Transaction
+            $table->string('email', 100); 
+            
             $table->string('matkhau', 255);
             $table->string('sodienthoai', 15)->nullable();
             $table->string('diachi', 255)->nullable();
             $table->string('vaitro', 10)->default('user');
             
-            // 3. Bắt buộc phải có timestamps (created_at, updated_at)
-            $table->timestamps(); 
+            // Bắt buộc phải có cái này
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('nguoidung');

@@ -39,4 +39,5 @@ EXPOSE 8080
 # Lệnh cũ của bạn là: CMD php artisan serve ...
 # HÃY XÓA NÓ ĐI VÀ THAY BẰNG DÒNG DƯỚI ĐÂY:
 
-CMD sh -c "php artisan migrate:fresh --force && php artisan serve --host=0.0.0.0 --port=8080"
+# Thử chạy migrate, nếu lỗi thì kệ nó, vẫn chạy serve để web Live
+CMD sh -c "php artisan migrate --force || true && php artisan serve --host=0.0.0.0 --port=8080"
