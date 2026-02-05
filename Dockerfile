@@ -29,7 +29,11 @@ WORKDIR /var/www
 COPY . .
 
 # 7. Chạy lệnh cài đặt thư viện PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-cache
+
+# 7.1 Clear all caches
+RUN rm -rf bootstrap/cache/*.php
+RUN composer dump-autoload
 
 # 8. Chạy lệnh build Frontend (React/Vue) - Nếu có
 # Nếu frontend đã build sẵn trong public/, bỏ qua bước này
